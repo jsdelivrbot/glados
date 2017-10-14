@@ -1,7 +1,10 @@
-const express = require('express')
+const express = require('express');
 const app = express();
+
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+
 var number = process.env.NUMBER;
+
 var selectGlados = ["https://i1.theportalwiki.net/img/c/c8/GLaDOS_02_part1_entry-1.wav",
 				   "https://i1.theportalwiki.net/img/e/e5/GLaDOS_00_part1_entry-1.wav",
 				   "https://i1.theportalwiki.net/img/3/38/GLaDOS_00_part1_entry-7.wav",
@@ -14,9 +17,12 @@ var selectGlados = ["https://i1.theportalwiki.net/img/c/c8/GLaDOS_02_part1_entry
 				   "https://i1.theportalwiki.net/img/9/9e/GLaDOS_15_part1_entry-1.wav"
 				   ];
 
+// function to select a random Glados wav file
 var pickAGlados = function () {
-var todaysGlados = selectGlados[Math.floor(Math.random() * 10)];
-return todaysGlados;
+	
+	var todaysGlados = selectGlados[Math.floor(Math.random() * 10)];
+
+	return todaysGlados;
 };
 
 app.post('/', function (req, res) {
@@ -24,10 +30,13 @@ app.post('/', function (req, res) {
    const twiml = new VoiceResponse();
 
    twiml.play(pickAGlados());
+
    const dial = twiml.dial();
-	dial.number(number);
+
+   dial.number(number);
+
    res.writeHead(200, { 'Content-Type': 'text/xml' });
-  res.end(twiml.toString());
+   res.end(twiml.toString());
 })
 
 
