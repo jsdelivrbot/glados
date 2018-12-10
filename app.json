@@ -2,7 +2,7 @@
   "name": "Glados Twilio call forwarding",
   "description": "A barebones Node.js app using Express, which alows you to speak to Glados, before having your call forwarded",
   "repository": "https://github.com/matthew1809/glados",
-  "logo": "https://rawgit.com/heroku/node-js-sample/master/public/node.svg",
+  "logo": "https://cdn.jsdelivr.net/gh/heroku/node-js-sample@master/public/node.svg",
   "keywords": ["node", "express", "twilio", "portal"],
   "env": {
 	 "NUMBER": {
